@@ -1,10 +1,14 @@
 'use strict';
 
-angular.module('poseidon')
-.factory('User', function($rootScope){
+angular.module('todo')
+.factory('User', function($rootScope, $http, nodeUrl){
 
   function User(){
   }
+
+  User.findOrCreate = function(){
+    return $http.post(nodeUrl + '/users');
+  };
 
   User.register = function(user){
     return $rootScope.afAuth.$createUser(user);

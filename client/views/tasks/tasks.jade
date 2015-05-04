@@ -1,0 +1,33 @@
+h3 TASKS
+
+.row
+  .col-xs-4
+    form(name='taskForm', novalidate)
+      .form-group
+        label(for='title') Title
+        input.form-control#title(type='text', name='title', ng-model='task.title')
+      .form-group
+        label(for='due') Due
+        input.form-control#due(type='date', name='due', ng-model='task.due')
+      .form-group
+        button.btn.btn-default(type='submit', ng-click='create(task)') Create Task
+  .col-xs-8
+
+.row
+  .col-xs-4
+    table.table.table-striped
+      thead
+        tr
+          th Delete
+          th Title
+          th Due
+          th Complete?
+          th Created At
+      tbody
+        tr(ng-repeat='task in tasks')
+          td: button.btn.btn-danger.btn-xs(ng-click='destroy(task)') x
+          td {{task.title}}
+          td {{task.due}}
+          td {{task.isComplete}}
+          td {{task.createdAt}}
+  .col-xs-8
